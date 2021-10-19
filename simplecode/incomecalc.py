@@ -1,24 +1,33 @@
-total = 0
-month = str(input("Месяц\n"))
-lube_income = []
-num_lube = int(input("Количество смазок\n"))
-for i in range (num_lube):
-    lube_income.append(float(input("Общее количество смазок\n")))
+month = str(input('Месяц\n'))
+lube = []
+money = 'our_input'
+while str(money) != '<built-in function input>':
+    try:
+        money = int(input('Количество смазок\n'))
+        lube.append(money)
+    except ValueError:
+        money = str(input)
+        if money == '<built-in function input>':
+            print('Список по смазкам сформирован\n')
 
-total1 = 0
-service_income = []
-num_service = int(input("Количество работ\n"))
-for i in range (num_service):
-    service_income.append(float(input("Сумма работы\n")))
+service = []
+money = 'our_input'
+while str(money) != '<built-in function input>':
+    try:
+        money = int(input('Сумма по сервису\n'))
+        service.append(money)
+    except ValueError:
+        money = str(input)
+        if money == '<built-in function input>':
+            print('Список по сервису сформирован\n')
 
-
-total = sum(lube_income) * 50
-total1 = sum(service_income) * 0.25
-total2 = total + total1 
-
-print ( "В месяце ", month, 
-        "\n Количество смазок составляет: ", str(sum(lube_income)),
-    "\n Общая сумма по сервису составляет: ", str(sum(service_income)), 
-    "\n Общий заработок по смазкам составляет:", str(total) + "UAH",
-    "\n Общий заработок по сервису составляет:", str(total1) + "UAH", 
-    "\n Общий доп. заработок составляет:", str(total2) + "UAH")
+lube_total = sum(lube) * 50
+service_total = sum(service) * 0.25
+all_total = lube_total + service_total
+print(f'В месяце {month}')
+print(f'Общее количество смазок: {sum(lube)}')
+print(f'Общий заработок по ним составляет: {lube_total} UAH')
+print(f'Общая сумма по сервису составляет: {sum(service)} UAH')
+print(f'Общий заработок по сервису составляет: {service_total} UAH')
+print(f'Общий заработок в этом месяце составляет: {all_total} UAH')
+    
